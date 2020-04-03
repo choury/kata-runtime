@@ -1125,9 +1125,9 @@ func (c *Container) stop(force bool) error {
 		return err
 	}
 
-	if err := c.detachDevices(); err != nil && !force {
-		return err
-	}
+	//	if err := c.detachDevices(); err != nil && !force {
+	//		return err
+	//	}
 
 	if err := c.removeDrive(); err != nil && !force {
 		return err

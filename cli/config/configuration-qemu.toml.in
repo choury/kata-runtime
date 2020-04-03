@@ -204,14 +204,14 @@ enable_iothreads = @DEFENABLEIOTHREADS@
 # with the agent and no proxy is started, otherwise use unix
 # sockets and start a proxy to communicate with the agent.
 # Default false
-#use_vsock = true
+use_vsock = true
 
 # VFIO devices are hotplugged on a bridge by default. 
 # Enable hotplugging on root bus. This may be required for devices with
 # a large PCI bar, as this is a current limitation with hotplugging on 
 # a bridge. This value is valid for "pc" machine type.
 # Default false
-#hotplug_vfio_on_root_bus = true
+hotplug_vfio_on_root_bus = true
 
 # If vhost-net backend for virtio-net is not desired, set to true. Default is false, which trades off
 # security (vhost-net runs ring0) for network I/O performance. 
@@ -227,7 +227,7 @@ enable_iothreads = @DEFENABLEIOTHREADS@
 # The source of entropy /dev/urandom is non-blocking and provides a
 # generally acceptable source of entropy. It should work well for pretty much
 # all practical purposes.
-#entropy_source= "@DEFENTROPYSOURCE@"
+entropy_source= "@DEFENTROPYSOURCE@"
 
 # Path to OCI hook binaries in the *guest rootfs*.
 # This does not affect host-side hooks which must instead be added to

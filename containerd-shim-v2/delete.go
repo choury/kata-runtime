@@ -20,6 +20,9 @@ func deleteContainer(ctx context.Context, s *service, c *container) error {
 	if !c.cType.IsSandbox() {
 		status, err := s.sandbox.StatusContainer(c.id)
 		if err != nil {
+			if isNotFound(err) {
+				goto cleanup
+			}
 			return err
 		}
 		if status.State.State != types.StateStopped {
@@ -34,6 +37,7 @@ func deleteContainer(ctx context.Context, s *service, c *container) error {
 		}
 	}
 
+cleanup:
 	// Run post-stop OCI hooks.
 	if err := katautils.PostStopHooks(ctx, *c.spec, s.sandbox.ID(), c.bundle); err != nil {
 		return err
